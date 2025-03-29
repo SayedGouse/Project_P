@@ -1,22 +1,23 @@
+# Use Node.js 18 as the base image
 FROM node:18
 
-# Set the working directory in the container
-WORKDIR /backend
+# Set the working directory inside the container
+WORKDIR /app  
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json first to leverage Docker caching
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application
+# Copy the rest of the application files
 COPY . .
 
 # Expose the application port
 EXPOSE 3000
 
-# Define environment variables
+# Set environment variables
 ENV NODE_ENV=production
 
-# Command to run the application
+# Start the application
 CMD ["npm", "start"]
