@@ -1,0 +1,10 @@
+
+services:
+  - type: web
+    name: prject_p
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile  # Path to your Dockerfile
+    buildCommand: ""  # No additional build command is required since Dockerfile handles the build
+    startCommand: ""  # Dockerfile's CMD will handle the start command
+    autoDeploy: true  # Automatically deploy on changes
